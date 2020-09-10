@@ -799,7 +799,9 @@ my @allowed =
         Q{&next},
         Q{&postcircumfix:<[; ]>},
         Q{&postcircumfix:<{; }>},
+        Q{&sprintf},
         Q{CORE-SETTING-REV},
+        Q{Formatter},
         Q{Grammar},
         Q{PseudoStash},
     );
