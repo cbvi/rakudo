@@ -2298,6 +2298,7 @@ BEGIN {
     #     has Mu $!package;
     #     has @!dispatch_order;
     #     has Mu $!dispatch_cache;
+    #     has Mu $!op_props;
     Routine.HOW.add_parent(Routine, Block);
     Routine.HOW.add_attribute(Routine, Attribute.new(:name<@!dispatchees>, :type(List), :package(Routine)));
     Routine.HOW.add_attribute(Routine, Attribute.new(:name<$!dispatcher>, :type(Mu), :package(Routine)));
@@ -2308,7 +2309,7 @@ BEGIN {
 #?if !moar
     Routine.HOW.add_attribute(Routine, Attribute.new(:name<$!dispatch_cache>, :type(Mu), :package(Routine)));
 #?endif
-
+    Routine.HOW.add_attribute(Routine, Attribute.new(:name<$!op_props>, :type(Mu), :package(Routine)));
     Routine.HOW.add_method(Routine, 'is_dispatcher', nqp::getstaticcode(sub ($self) {
             my $dc_self   := nqp::decont($self);
             my $disp_list := nqp::getattr($dc_self, Routine, '@!dispatchees');
