@@ -36,7 +36,7 @@ my @lower = ("",<<
   trim-leading trim-trailing truncate uc unimatch uniname
   uninames uniparse uniprop uniprop-bool uniprop-int uniprop-str
   uniprops unique unival univals unlink unpolar unshift val values
-  warn wordcase words
+  warn wordcase words zprintf
 >>).flat;
 
 my @lower-not-implemented = ();
