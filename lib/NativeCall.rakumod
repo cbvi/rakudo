@@ -286,6 +286,7 @@ my $use-dispatcher = so $*RAKU.compiler.?supports-op('dispatch_v') && EVAL q:to/
                 # If it's in a Scalar container...
                 my $track-arg := nqp::dispatch('boot-syscall', 'dispatcher-track-arg', $args, nqp::unbox_i($i));
                 nqp::dispatch('boot-syscall', 'dispatcher-guard-type', $track-arg);
+                nqp::dispatch('boot-syscall', 'dispatcher-guard-concreteness', $track-arg);
                 my $arg := nqp::captureposarg($args, $i);
                 my $track-value;
                 if nqp::isconcrete_nd($arg) && nqp::what_nd($arg) =:= Scalar {
