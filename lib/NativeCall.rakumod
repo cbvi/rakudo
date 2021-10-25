@@ -271,8 +271,9 @@ my $use-dispatcher = so $*RAKU.compiler.?supports-op('dispatch_v') && EVAL q:to/
     }
     my &raku-nativecall := -> $capture is raw {
         my $track_callee := nqp::dispatch('boot-syscall', 'dispatcher-track-arg', $capture, 0);
+        nqp::dispatch('boot-syscall', 'dispatcher-guard-literal', $track_callee);
         my $callee := nqp::captureposarg($capture, 0);
-        $callee.setup; #FIXME need to track callee literal
+        $callee.setup;
 
         my Mu $args := nqp::dispatch('boot-syscall', 'dispatcher-drop-arg', $capture, 0);
         my $signature := nqp::getattr($callee, Code, '$!signature');
